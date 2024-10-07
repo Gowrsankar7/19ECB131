@@ -2,9 +2,10 @@
 
 int main() {
     // Write C code here
-    printf("Try programiz.pro");
+    printf("hello world");
 
     return 0;
-}Try programiz.pro
+    
+hello world
 
 === Code Execution Successful ===
