@@ -1,0 +1,35 @@
+// switch case 
+#include<stdio.h>
+int main ()
+{
+  int a;
+  printf("enter the value of a");
+  scanf("%d",&a);
+  
+  switch (a)
+  {
+  case 7:
+     printf("dhoni");
+     break;
+  case 18:
+     printf("virat");
+     break;
+   case 45:
+     printf("rohit");
+     break;
+   }
+   return 0;
+   }
+
+   output is 
+   enter the value of a
+7
+dhoni
+enter the value of a
+
+18
+virat
+
+enter the value of a
+45
+rohit
