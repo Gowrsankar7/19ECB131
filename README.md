@@ -1,21 +1,37 @@
 // programme to find whether the given year is leap year or not
+
 //leap year or not
+
 #include<stdio.h>
+
 int main()
+
 {
 int year;
+
 printf("enter the year ");
+
 scanf("%d",&year);
+
   if(year %4 ==0)
+  
       if(year % 100!=0)
+      
       {printf("the year is leap year");}
+      
       else
-      {printf("the year is normal year");
+      {printf("the year is normal
+      year");
+      
     }
   else
+  
   {printf("the year is normal year");
+  
   }
+  
   return 0;
+  
   
    }
 
