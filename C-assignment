@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    FILE *file;
+    int choice;
+    char ch;             // Variable to read one character at a time from the file
+    char line[256];      // Array to store each line of text we read from the file
+    int index = 0;       // Index to keep track of the current position in the line
+
+    // Open the file in read mode
+    file = fopen("cricket.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file.\n");
+        return 1;  // If file can't be opened, print an error and stop the program
+    }
+
+    // Display the menu for the user to choose a subtopic of cricket
+    printf("\nChoose a subtopic of Cricket to read:\n");
+    printf("1. Cricket Rules\n");
+    printf("2. Famous Cricket Players\n");
+    printf("3. Cricket Formats\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);  // Read user's choice
+
+    // Skip the first two lines of the file (the title and description)
+    ch = fgetc(file); // Read one character at a time
+    while (ch != '\n' && ch != EOF) ch = fgetc(file); // Skip the "Cricket" title
+    ch = fgetc(file);  // Skip the description line
+    while (ch != '\n' && ch != EOF) ch = fgetc(file);
+
+    // Process based on the user's choice
+    if (choice == 1) {  // If user selects "Cricket Rules"
+        printf("\nCricket Rules:\n");
+        
+        // Read and print lines for "Cricket Rules"
+        while (fgets(line, sizeof(line), file)) {
+            if (strstr(line, "Famous Cricket Players") != NULL || strstr(line, "Cricket Formats") != NULL) {
+                break; // Stop if we reach another section
+            }
+            printf("%s", line);  // Print the current line
+        }
+    }
+    else if (choice == 2) {  // If user selects "Famous Cricket Players"
+        printf("\nFamous Cricket Players:\n");
+
+        // Read until we reach the "Famous Cricket Players" section
+        while (fgets(line, sizeof(line), file)) {
+            if (strstr(line, "Cricket Rules") != NULL) {
+                continue;  // Skip the "Cricket Rules" section
+            }
+            if (strstr(line, "Cricket Formats") != NULL) {
+                break;  // Stop when we reach the "Cricket Formats" section
+            }
+            printf("%s", line);  // Print the current line
+        }
+    }
+    else if (choice == 3) {  // If user selects "Cricket Formats"
+        printf("\nCricket Formats:\n");
+
+        // Read until we reach the "Cricket Formats" section
+        while (fgets(line, sizeof(line), file)) {
+            if (strstr(line, "Cricket Rules") != NULL || strstr(line, "Famous Cricket Players") != NULL) {
+                continue;  // Skip sections that are not the "Cricket Formats"
+            }
+            printf("%s", line);  // Print the current line
+        }
+    }
+    else {
+        printf("Invalid choice, exiting program.\n");
+    }
+
+    // Close the file before exiting
+    fclose(file);
+    return 0;  // End the program
+}
