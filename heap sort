@@ -34,3 +34,17 @@ int main() {
   else printf("Invalid choice\n");
   return 0;
 }
+
+
+output
+//1. Heap Sort
+2. Exit
+Select: 1
+1	2	3	4	5	6	7	8	9	10	
+
+1. Heap Sort
+2. Exit
+Select: 2
+
+
+=== Code Execution Successful ===
